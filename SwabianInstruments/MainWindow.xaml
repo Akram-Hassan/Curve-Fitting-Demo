@@ -6,7 +6,8 @@
         xmlns:oxy="http://oxyplot.org/wpf"
         xmlns:local="clr-namespace:SwabianInstruments"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800"
+        WindowState="Maximized">
     <Window.DataContext>
         <local:MainViewModel/>
     </Window.DataContext>
@@ -23,13 +24,13 @@
                 <ComboBoxItem>Power Function</ComboBoxItem>
             </ComboBox>
         </StackPanel>
-        <DataGrid DockPanel.Dock="Left" ColumnWidth="40">
+        <DataGrid DockPanel.Dock="Left" ColumnWidth="40" MinWidth="250" Margin="20">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="X"></DataGridTextColumn>
                 <DataGridTextColumn Header="Y"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Grid>
+        <Grid Margin="20">
             <Grid.RowDefinitions>
                 <RowDefinition Height="3*"></RowDefinition>
                 <RowDefinition Height="1.5*"></RowDefinition>
@@ -39,7 +40,7 @@
                     <oxy:LineSeries ItemsSource="{Binding Points}"/>
                 </oxy:Plot.Series>
             </oxy:Plot>
-            <TextBlock Grid.Row="1" Background="AliceBlue">Parameters Here</TextBlock>
+            <TextBlock Grid.Row="1" Background="AliceBlue" Margin="10">Parameters Here</TextBlock>
         </Grid>
     </DockPanel>
 </Window>
