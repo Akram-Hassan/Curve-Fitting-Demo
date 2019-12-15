@@ -6,7 +6,27 @@
         xmlns:local="clr-namespace:SwabianInstruments"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-
-    </Grid>
+    <DockPanel>
+        <StackPanel DockPanel.Dock="Top" Margin="10" Orientation="Horizontal">
+            <TextBlock FontSize="14" VerticalAlignment="Center">Load Data</TextBlock>
+            <Label BorderThickness="1" Width="350" VerticalAlignment="Center" Background="LightGray">C:\Data\linear.csv</Label>
+            <Button Margin="5">....</Button>
+            <TextBlock FontSize="14" Margin="60,0,0,0" VerticalAlignment="Center">Fitting Method</TextBlock>
+            <ComboBox Margin="10,0,0,0" Width="100">
+                <ComboBoxItem>Linear</ComboBoxItem>
+                <ComboBoxItem>Exponential</ComboBoxItem>
+                <ComboBoxItem>Power Function</ComboBoxItem>
+            </ComboBox>
+        </StackPanel>
+        <DataGrid DockPanel.Dock="Left" ColumnWidth="40">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="X"></DataGridTextColumn>
+                <DataGridTextColumn Header="Y"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <StackPanel DockPanel.Dock="Right">
+            <TextBlock Background="AliceBlue">Load Data 1</TextBlock>
+            <TextBlock Background="AliceBlue">Load Data 2</TextBlock>
+        </StackPanel>
+    </DockPanel>
 </Window>
