@@ -16,7 +16,7 @@
     <DockPanel>
         <StackPanel DockPanel.Dock="Top" Margin="10" Orientation="Horizontal">
             <TextBlock FontSize="14" VerticalAlignment="Center">Load Data</TextBlock>
-            <Label BorderThickness="1" Width="350" VerticalAlignment="Center" Background="LightGray">C:\Data\linear.csv</Label>
+            <TextBlock Width="350" Margin="10,0,0,0" MinHeight="20" VerticalAlignment="Center" Background="LightGray" Text="{Binding FileName}" ></TextBlock>
             <Button Margin="5" Click="Button_Click">....</Button>
             <TextBlock FontSize="14" Margin="60,0,0,0" VerticalAlignment="Center">Fitting Method</TextBlock>
             <ComboBox Margin="10,0,0,0" Width="100" SelectionChanged="ComboBox_SelectionChanged">
@@ -25,10 +25,10 @@
                 <ComboBoxItem>Power Function</ComboBoxItem>
             </ComboBox>
         </StackPanel>
-        <DataGrid DockPanel.Dock="Left" ColumnWidth="40" MinWidth="250" Margin="20">
+        <DataGrid DockPanel.Dock="Left" ColumnWidth="40" MinWidth="250" Margin="20" ItemsSource="{Binding Path=Points}" AutoGenerateColumns="False" >
             <DataGrid.Columns>
-                <DataGridTextColumn Header="X"></DataGridTextColumn>
-                <DataGridTextColumn Header="Y"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Path=X}" Header="X" MinWidth="100" />
+                <DataGridTextColumn Binding="{Binding Path=Y}" Header="Y" MinWidth="100"/>
             </DataGrid.Columns>
         </DataGrid>
         <Grid Margin="20">
@@ -36,9 +36,9 @@
                 <RowDefinition Height="3*"></RowDefinition>
                 <RowDefinition Height="1.5*"></RowDefinition>
             </Grid.RowDefinitions>
-            <oxy:Plot Title="{Binding GraphViewModel.Title}">
+            <oxy:Plot Title="Linear">
                 <oxy:Plot.Series>
-                    <oxy:LineSeries ItemsSource="{Binding GraphViewModel.Points}"/>
+                    <oxy:LineSeries ItemsSource="{Binding Points}"/>
                 </oxy:Plot.Series>
             </oxy:Plot>
             <TextBlock Grid.Row="1" Background="AliceBlue" Margin="10">Parameters Here</TextBlock>

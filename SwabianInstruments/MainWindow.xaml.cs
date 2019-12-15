@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Microsoft.Win32;
 using OxyPlot;
 using SwabianInstruments.ViewModels;
 
@@ -31,7 +32,11 @@ namespace SwabianInstruments
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            this.viewModel.OnLoadFile();
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Text files (*.csv)|*.csv";
+
+            if (openFileDialog.ShowDialog() == true)
+                this.viewModel.OnLoadFile(openFileDialog.FileName);
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
