@@ -4,12 +4,13 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:oxy="http://oxyplot.org/wpf"
+        xmlns:vm="clr-namespace:SwabianInstruments.ViewModels"
         xmlns:local="clr-namespace:SwabianInstruments"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800"
         WindowState="Maximized">
     <Window.DataContext>
-        <local:MainViewModel/>
+        <vm:MainViewModel />
     </Window.DataContext>
     
     <DockPanel>
@@ -35,9 +36,9 @@
                 <RowDefinition Height="3*"></RowDefinition>
                 <RowDefinition Height="1.5*"></RowDefinition>
             </Grid.RowDefinitions>
-            <oxy:Plot Title="{Binding Title}">
+            <oxy:Plot Title="{Binding GraphViewModel.Title}">
                 <oxy:Plot.Series>
-                    <oxy:LineSeries ItemsSource="{Binding Points}"/>
+                    <oxy:LineSeries ItemsSource="{Binding GraphViewModel.Points}"/>
                 </oxy:Plot.Series>
             </oxy:Plot>
             <TextBlock Grid.Row="1" Background="AliceBlue" Margin="10">Parameters Here</TextBlock>
