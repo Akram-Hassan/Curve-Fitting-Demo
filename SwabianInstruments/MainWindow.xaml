@@ -19,7 +19,7 @@
             <TextBlock Width="350" Margin="10,0,0,0" MinHeight="20" VerticalAlignment="Center" Background="LightGray" Text="{Binding FileName}" ></TextBlock>
             <Button Margin="5" Click="Button_Click">....</Button>
             <TextBlock FontSize="14" Margin="60,0,0,0" VerticalAlignment="Center">Fitting Method</TextBlock>
-            <ComboBox Margin="10,0,0,0" Width="100" SelectionChanged="ComboBox_SelectionChanged">
+            <ComboBox Margin="10,0,0,0" Width="100" SelectionChanged="ComboBox_SelectionChanged" x:Name="cboFittingMethod">
                 <ComboBoxItem IsSelected="True">Linear</ComboBoxItem>
                 <ComboBoxItem>Exponential</ComboBoxItem>
                 <ComboBoxItem>Power Function</ComboBoxItem>

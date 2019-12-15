@@ -27,21 +27,23 @@ namespace SwabianInstruments
         public MainWindow()
         {
             InitializeComponent();
-            this.viewModel = (MainViewModel)this.DataContext;
+            viewModel = (MainViewModel)this.DataContext;
         }
 
+        //Can be refactored to commands
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "Text files (*.csv)|*.csv";
 
             if (openFileDialog.ShowDialog() == true)
-                this.viewModel.OnLoadFile(openFileDialog.FileName);
+                viewModel.OnLoadFile(openFileDialog.FileName, cboFittingMethod.SelectedIndex);
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //this.viewModel.OnSelectFittingMethod(0);
+            if(viewModel != null)
+                viewModel.OnSelectFittingMethod(0);
         }
     }
 }

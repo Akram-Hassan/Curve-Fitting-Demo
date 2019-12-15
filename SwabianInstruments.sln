@@ -3,13 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29503.13
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwabianInstruments", "SwabianInstruments\SwabianInstruments.csproj", "{4AF90C8B-2BAE-453F-B4D8-AC7CE4418B82}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SwabianInstruments", "SwabianInstruments\SwabianInstruments.csproj", "{4AF90C8B-2BAE-453F-B4D8-AC7CE4418B82}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Numerical", "Numerical\Numerical.csproj", "{7017FC44-8325-4C46-9409-D04EF5280615}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTests", "UnitTests\UnitTests.csproj", "{57FE92BE-2234-44E9-AD64-43E7F0AE511E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{57FE92BE-2234-44E9-AD64-43E7F0AE511E}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csproj", "{921DF745-1C66-4C1C-9FFF-5C7F4944782F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppServices", "Models\AppServices.csproj", "{921DF745-1C66-4C1C-9FFF-5C7F4944782F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,10 +19,6 @@ Global
 		{4AF90C8B-2BAE-453F-B4D8-AC7CE4418B82}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4AF90C8B-2BAE-453F-B4D8-AC7CE4418B82}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4AF90C8B-2BAE-453F-B4D8-AC7CE4418B82}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7017FC44-8325-4C46-9409-D04EF5280615}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7017FC44-8325-4C46-9409-D04EF5280615}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7017FC44-8325-4C46-9409-D04EF5280615}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7017FC44-8325-4C46-9409-D04EF5280615}.Release|Any CPU.Build.0 = Release|Any CPU
 		{57FE92BE-2234-44E9-AD64-43E7F0AE511E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{57FE92BE-2234-44E9-AD64-43E7F0AE511E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{57FE92BE-2234-44E9-AD64-43E7F0AE511E}.Release|Any CPU.ActiveCfg = Release|Any CPU

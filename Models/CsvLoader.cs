@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace Models
+namespace AppServices
 {
-    public class FileModel
+    public class CsvLoader
     {
-        public IEnumerable<Tuple<double, double>> LoadDataFileContent(string filePath)
+        public static IEnumerable<Tuple<double, double>> LoadDataFileContent(string filePath)
         {
             return File.ReadAllLines(filePath).Select(
                 line => {
