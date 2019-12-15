@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
+using System.Windows;
 
 namespace SwabianInstruments.ViewModels
 {
@@ -60,13 +61,13 @@ namespace SwabianInstruments.ViewModels
         }
 
 
-        //Better with Commands
+        //Can be refactored to commands
         public void OnLoadFile(string filePath, int index)
         {
             this.FileName = filePath;
         }
 
-        //Better with Commands
+        //Can be refactored to commands
         public void OnSelectFittingMethod(int index)
         {
             //Bad:
@@ -75,10 +76,18 @@ namespace SwabianInstruments.ViewModels
             this.Method = (FittingMethod)index;
         }
 
-        //Better with Commands
+        //Can be refactored to commands
         public void OnShowData()
         {
-            this.DataModel = _appModel.CalculateData(this.FileName, this.Method);
+            try
+            {
+                this.DataModel = _appModel.CalculateData(this.FileName, this.Method);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error reading the file");
+                return;
+            }
             UpdatePlotter();
         }
 

@@ -9,7 +9,16 @@ namespace AppServices
     {
         public DataModel CalculateData(string filePath, FittingMethod method)
         {
-            var points = CsvLoader.LoadDataFileContent(filePath);
+            IEnumerable<Tuple<double, double>> points;
+            try
+            {
+                points = CsvLoader.LoadDataFileContent(filePath);
+            }
+            catch (FormatException exception)
+            {
+                throw exception;
+            }
+
             Tuple<double, double> parameters = new Tuple<double, double>(0,0);
 
             switch (method)
