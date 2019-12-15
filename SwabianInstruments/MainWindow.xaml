@@ -18,12 +18,13 @@
             <TextBlock FontSize="14" VerticalAlignment="Center">Load Data</TextBlock>
             <TextBlock Width="350" Margin="10,0,0,0" MinHeight="20" VerticalAlignment="Center" Background="LightGray" Text="{Binding FileName}" ></TextBlock>
             <Button Margin="5" Click="Button_Click">....</Button>
-            <TextBlock FontSize="14" Margin="60,0,0,0" VerticalAlignment="Center">Fitting Method</TextBlock>
+            <TextBlock FontSize="14" Margin="30,0,0,0" VerticalAlignment="Center">Fitting Method</TextBlock>
             <ComboBox Margin="10,0,0,0" Width="100" SelectionChanged="ComboBox_SelectionChanged" x:Name="cboFittingMethod">
                 <ComboBoxItem IsSelected="True">Linear</ComboBoxItem>
                 <ComboBoxItem>Exponential</ComboBoxItem>
                 <ComboBoxItem>Power Function</ComboBoxItem>
             </ComboBox>
+            <Button Margin="50,0,0,0" FontWeight="Bold" MinWidth="80" Click="Button_Click_1">Load Data</Button>
         </StackPanel>
         <DataGrid DockPanel.Dock="Left" ColumnWidth="40" MinWidth="250" Margin="20" ItemsSource="{Binding Path=Points}" AutoGenerateColumns="False" >
             <DataGrid.Columns>

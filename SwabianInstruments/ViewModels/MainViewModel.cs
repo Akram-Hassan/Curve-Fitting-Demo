@@ -29,7 +29,9 @@ namespace SwabianInstruments.ViewModels
             }
         }
 
-        
+        public FittingMethod Method { get; private set; }
+
+
         private ObservableCollection<DataPoint> _points = new ObservableCollection<DataPoint>();
         public ObservableCollection<DataPoint> Points
         {
@@ -59,28 +61,36 @@ namespace SwabianInstruments.ViewModels
         }
 
 
+        //Better with Commands
         public void OnLoadFile(string filePath, int index)
         {
             this.FileName = filePath;
-            this.DataModel = _appModel.CalculateData(filePath, (FittingMethod)index);
-            UpdateView();
         }
 
+        //Better with Commands
         public void OnSelectFittingMethod(int index)
         {
-            this.DataModel = _appModel.CalculateData(this.FileName, (FittingMethod)index);
+            //Bad:
+            //the combobox should be bound to the enum in Xaml using IValueConverter or some other technique
+            //To be investigated later
+            this.Method = (FittingMethod)index;
+        }
+
+        //Better with Commands
+        public void OnShowData()
+        {
+            this.DataModel = _appModel.CalculateData(this.FileName, this.Method);
             UpdateView();
         }
 
         //This is so ugly!
-        //I have to do it this way until because the library plot component works only with DataPoint instances
+        //I have to do it this way because the library plot component works only with DataPoint instances
         //whose type is in the library
         //To be removed later
         private void UpdateView()
         {
             var points = DataModel.Points.Select(x => new DataPoint(x.Item1, x.Item2));
             this.Points = new ObservableCollection<DataPoint>(points);
-            ;
         }
     }
 }

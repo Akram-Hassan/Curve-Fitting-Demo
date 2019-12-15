@@ -35,7 +35,6 @@ namespace SwabianInstruments
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "Text files (*.csv)|*.csv";
-
             if (openFileDialog.ShowDialog() == true)
                 viewModel.OnLoadFile(openFileDialog.FileName, cboFittingMethod.SelectedIndex);
         }
@@ -43,7 +42,12 @@ namespace SwabianInstruments
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if(viewModel != null)
-                viewModel.OnSelectFittingMethod(0);
+                viewModel.OnSelectFittingMethod(((ComboBox)sender).SelectedIndex);
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            viewModel.OnShowData();
         }
     }
 }
