@@ -32,6 +32,7 @@ namespace AppServices
                 Parameters = parameters ,
                 Points = points.ToList()
             };
+
             return result;
         }
     }

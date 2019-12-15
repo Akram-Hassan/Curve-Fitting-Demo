@@ -31,7 +31,6 @@ namespace SwabianInstruments.ViewModels
 
         public FittingMethod Method { get; private set; }
 
-
         private ObservableCollection<DataPoint> _points = new ObservableCollection<DataPoint>();
         public ObservableCollection<DataPoint> Points
         {
@@ -80,14 +79,15 @@ namespace SwabianInstruments.ViewModels
         public void OnShowData()
         {
             this.DataModel = _appModel.CalculateData(this.FileName, this.Method);
-            UpdateView();
+            UpdatePlotter();
         }
 
         //This is so ugly!
         //I have to do it this way because the library plot component works only with DataPoint instances
         //whose type is in the library
+        //So I cannot bind the plotter to some other POCO "yet".
         //To be removed later
-        private void UpdateView()
+        private void UpdatePlotter()
         {
             var points = DataModel.Points.Select(x => new DataPoint(x.Item1, x.Item2));
             this.Points = new ObservableCollection<DataPoint>(points);
