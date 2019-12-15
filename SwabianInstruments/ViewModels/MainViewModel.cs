@@ -15,7 +15,6 @@ namespace SwabianInstruments.ViewModels
         public MainViewModel()
         {
             this.GraphViewModel = new GraphViewModel();
-
             LoadGraph();
             LoadPointsTable();
             ShowParameters();
@@ -43,5 +42,16 @@ namespace SwabianInstruments.ViewModels
         private void LoadPointsTable()
         {
         }
+
+        public void OnLoadFile()
+        {
+            ;
+        }
+
+        public void OnSelectFittingMethod()
+        {
+            ;
+        }
+
     }
 }
