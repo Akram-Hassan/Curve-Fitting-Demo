@@ -19,7 +19,7 @@ namespace AppServices
             return ProcessLines(lines);
         }
 
-        private static bool LineValid(string line)
+        public static bool LineValid(string line)
         {
             string pattern = @"[0-9]+(,[0-9]+)$";
             Match m = Regex.Match(line, pattern, RegexOptions.IgnoreCase);
