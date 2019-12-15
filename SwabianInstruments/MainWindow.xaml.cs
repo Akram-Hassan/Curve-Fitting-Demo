@@ -41,7 +41,7 @@ namespace SwabianInstruments
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            this.viewModel.OnSelectFittingMethod();
+            //this.viewModel.OnSelectFittingMethod(0);
         }
     }
 }

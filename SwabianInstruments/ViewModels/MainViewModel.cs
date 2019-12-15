@@ -6,10 +6,17 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
 
+
 namespace SwabianInstruments.ViewModels
 {
+
     public class MainViewModel : INotifyPropertyChanged
     {
+
+        //Bad initialization
+        private NumericalModel _numericalModel = new NumericalModel();
+        private FileModel _fileModel = new FileModel();
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         private string _fileName;
@@ -46,21 +53,25 @@ namespace SwabianInstruments.ViewModels
         public void OnLoadFile(string fileName)
         {
             this.FileName = fileName;
-            var points = FileModel.LoadDataFileContent(fileName);
+            var points = _fileModel.LoadDataFileContent(fileName);
 
+            UpdateView(points);
+        }
+
+        private void UpdateView(IEnumerable<Tuple<double, double>> points)
+        {
             //Todo: Bad
             Points.Clear();
             foreach (var item in points)
             {
                 Debug.WriteLine(item);
-                Points.Add(new DataPoint(item.Item1 , item.Item1));
+                Points.Add(new DataPoint(item.Item1, item.Item1));
             }
         }
 
-        public void OnSelectFittingMethod()
+        public void OnSelectFittingMethod(int index)
         {
             ;
         }
-
     }
 }

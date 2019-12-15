@@ -7,7 +7,7 @@ namespace Models
 {
     public class FileModel
     {
-        public static IEnumerable<Tuple<double, double>> LoadDataFileContent(string filePath)
+        public IEnumerable<Tuple<double, double>> LoadDataFileContent(string filePath)
         {
             return File.ReadAllLines(filePath).Select(
                 line => {

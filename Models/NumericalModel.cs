@@ -6,6 +6,18 @@ namespace Models
 {
     public class NumericalModel
     {
+        public void FitLinear()
+        {
 
+        }
+
+        public void FitExponential()
+        {
+
+        }
+        public void FitPowerFunction()
+        {
+
+        }
     }
 }
