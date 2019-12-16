@@ -1,9 +1,7 @@
 ﻿using AppServices;
 using OxyPlot;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Diagnostics;
 
 namespace SwabianInstruments.ViewModels
 {
@@ -29,7 +27,7 @@ namespace SwabianInstruments.ViewModels
                 if (value != _fileName)
                 {
                     _fileName = value;
-                    PropertyChanged(this, new PropertyChangedEventArgs(nameof(this.FileName)));
+                    PropertyChanged(this, new PropertyChangedEventArgs(nameof(FileName)));
                 }
             }
         }
@@ -45,7 +43,7 @@ namespace SwabianInstruments.ViewModels
                 if (value != _points)
                 {
                     _points = value;
-                    PropertyChanged(this, new PropertyChangedEventArgs(nameof(this.Points)));
+                    PropertyChanged(this, new PropertyChangedEventArgs(nameof(Points)));
                 }
             }
         }
@@ -59,7 +57,7 @@ namespace SwabianInstruments.ViewModels
                 if (value != _dataModel)
                 {
                     _dataModel = value;
-                    PropertyChanged(this, new PropertyChangedEventArgs(nameof(this.DataModel)));
+                    PropertyChanged(this, new PropertyChangedEventArgs(nameof(DataModel)));
                 }
             }
         }
