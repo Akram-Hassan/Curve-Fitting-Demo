@@ -1,18 +1,22 @@
 ﻿using AppServices;
 using OxyPlot;
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
-using System.Linq;
-using System.Windows;
 
 namespace SwabianInstruments.ViewModels
 {
     public class MainViewModel : INotifyPropertyChanged
     {
-        private ApplicationModel _appModel = new ApplicationModel();
+        public readonly ApplicationModel AppModel; 
+        public readonly ViewModelEventHandler EventHandler;
+
+        public MainViewModel()
+        {
+            AppModel = new ApplicationModel();
+            EventHandler = new ViewModelEventHandler(this);
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -30,7 +34,7 @@ namespace SwabianInstruments.ViewModels
             }
         }
 
-        public FittingMethod Method { get; private set; }
+        public FittingMethod Method { get; set; }
 
         private ObservableCollection<DataPoint> _points = new ObservableCollection<DataPoint>();
         public ObservableCollection<DataPoint> Points
@@ -58,48 +62,6 @@ namespace SwabianInstruments.ViewModels
                     PropertyChanged(this, new PropertyChangedEventArgs(nameof(this.DataModel)));
                 }
             }
-        }
-
-
-        //Can be refactored to commands
-        public void OnLoadFile(string filePath, int index)
-        {
-            this.FileName = filePath;
-        }
-
-        //Can be refactored to commands
-        public void OnSelectFittingMethod(int index)
-        {
-            //Bad:
-            //the combobox should be bound to the enum in Xaml using IValueConverter or some other technique
-            //To be investigated later
-            this.Method = (FittingMethod)index;
-        }
-
-        //Can be refactored to commands
-        public void OnShowData()
-        {
-            try
-            {
-                this.DataModel = _appModel.CalculateData(this.FileName, this.Method);
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Error reading the file");
-                return;
-            }
-            UpdatePlotter();
-        }
-
-        //This is so ugly!
-        //I have to do it this way because the library plot component works only with DataPoint instances
-        //whose type is in the library
-        //So I cannot bind the plotter to some other POCO "yet".
-        //To be removed later
-        private void UpdatePlotter()
-        {
-            var points = DataModel.Points.Select(x => new DataPoint(x.Item1, x.Item2));
-            this.Points = new ObservableCollection<DataPoint>(points);
         }
     }
 }

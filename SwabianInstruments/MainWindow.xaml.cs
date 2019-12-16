@@ -35,21 +35,22 @@ namespace SwabianInstruments
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "Text files (*.csv)|*.csv";
+
             if (openFileDialog.ShowDialog() == true)
-                viewModel.OnLoadFile(openFileDialog.FileName, cboFittingMethod.SelectedIndex);
+                viewModel.EventHandler.OnLoadFile(openFileDialog.FileName, cboFittingMethod.SelectedIndex);
         }
 
         //Can be refactored to commands
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if(viewModel != null)
-                viewModel.OnSelectFittingMethod(((ComboBox)sender).SelectedIndex);
+                viewModel.EventHandler.OnSelectFittingMethod(((ComboBox)sender).SelectedIndex);
         }
 
         //Can be refactored to commands
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            viewModel.OnShowData();
+            viewModel.EventHandler.OnShowData();
         }
     }
 }
