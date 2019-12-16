@@ -9,40 +9,42 @@ namespace AppServices
     {
         public DataModel CalculateData(string filePath, FittingMethod method)
         {
-            IEnumerable<Tuple<double, double>> points;
+            var points = LoadPointsFrom(filePath);
+            var parameters = CalculateParameters(method, points);
+
+            return new DataModel
+            {
+                Parameters = parameters,
+                Points = points.ToList()
+            };
+        }
+
+        private static Tuple<double, double> CalculateParameters(FittingMethod method, IEnumerable<Tuple<double, double>> points)
+        {
+            switch (method)
+            {
+                case FittingMethod.Linear:
+                    return NumericalMethods.FitLinear(points);
+                case FittingMethod.Exponential:
+                    return NumericalMethods.FitExponential(points);
+                case FittingMethod.PowerFunction:
+                    return NumericalMethods.FitPowerFunction(points);
+                default:
+                    return null;
+            }
+        }
+
+        private static IEnumerable<Tuple<double, double>> LoadPointsFrom(string filePath)
+        {
             try
             {
-                points = CsvLoader.LoadDataFileContent(filePath);
+                var points = CsvLoader.LoadDataFileContent(filePath);
+                return points;
             }
             catch (FormatException exception)
             {
                 throw exception;
             }
-
-            Tuple<double, double> parameters = new Tuple<double, double>(0,0);
-
-            switch (method)
-            {
-                case FittingMethod.Linear:
-                    parameters = NumericalMethods.FitLinear(points);
-                    break;
-                case FittingMethod.Exponential:
-                    parameters = NumericalMethods.FitExponential(points);
-                    break;
-                case FittingMethod.PowerFunction:
-                    parameters = NumericalMethods.FitPowerFunction(points);
-                    break;
-                default:
-                    break;
-            }
-
-            DataModel result = new DataModel
-            {
-                Parameters = parameters ,
-                Points = points.ToList()
-            };
-
-            return result;
         }
     }
 }
