@@ -44,11 +44,17 @@ namespace UnitTests
         [Fact]
         public void TestFileErrorHandling_InvalidFileCase()
         {
-            string invalidFilePath = Path.Combine(Environment.CurrentDirectory, @"invalid.csv");
+            string invalidContent = "Invalid Content\nThis File is not working";
+            string path = Path.GetRandomFileName() + "invalid.csv";
+            File.WriteAllText(path, invalidContent);
+
+            string invalidFilePath = Path.Combine(Environment.CurrentDirectory, path);
 
             Assert.Throws<FormatException>(() => {
                 CsvLoader.LoadDataFileContent(invalidFilePath);
             });
+
+            File.Delete(path);
         }
     }
 }
