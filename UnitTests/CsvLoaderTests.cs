@@ -1,5 +1,6 @@
 using AppServices;
 using System;
+using System.IO;
 using System.Linq;
 using Xunit;
 
@@ -33,9 +34,21 @@ namespace UnitTests
         }
 
         [Fact]
-        public void TestFileErrorHandling()
+        public void TestFileErrorHandling_NotFoundCase()
         {
+            Assert.Throws<FileNotFoundException>(() => {
+                CsvLoader.LoadDataFileContent(@"X:\Invalid_File_Path!");
+            });
+        }
 
+        [Fact]
+        public void TestFileErrorHandling_InvalidFileCase()
+        {
+            string invalidFilePath = Path.Combine(Environment.CurrentDirectory, @"invalid.csv");
+
+            Assert.Throws<FormatException>(() => {
+                CsvLoader.LoadDataFileContent(invalidFilePath);
+            });
         }
     }
 }

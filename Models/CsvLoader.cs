@@ -10,11 +10,12 @@ namespace AppServices
     {
         public static IEnumerable<Tuple<double, double>> LoadDataFileContent(string filePath)
         {
+            if (!File.Exists(filePath))
+                throw new FileNotFoundException("Couln't find points file");
+            
             var lines = File.ReadAllLines(filePath);
             if (lines.Any(line => !LineValid(line) ))
-            {
-                throw new InvalidCSVFileExeption("The csv file is not correctly formatted!");
-            }
+                throw new FormatException("Invalid csv format!");
 
             return ProcessLines(lines);
         }
