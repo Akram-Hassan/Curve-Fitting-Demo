@@ -9,7 +9,7 @@ namespace SwabianInstruments.ViewModels
 {
     public class ViewModelEventHandler
     {
-        private readonly MainViewModel viewModel;
+        private MainViewModel viewModel;
 
         public ViewModelEventHandler(MainViewModel viewModel)
         {
@@ -41,6 +41,7 @@ namespace SwabianInstruments.ViewModels
             catch (Exception)
             {
                 MessageBox.Show("Error reading the file");
+                viewModel = new MainViewModel(); 
                 return;
             }
             UpdatePlotter();
